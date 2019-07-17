@@ -50,3 +50,29 @@ function myFilter(callback, array) {
   }
   return newArray;
 }
+
+Array.prototype.mySome = function (callback, thisArg) {
+  if (thisArg === undefined) { thisArg = this; }
+
+  if (thisArg.length === 0) { return false; }
+
+  for (let i = 0; i < thisArg.length; i++) {
+    if (callback(thisArg[i], i, thisArg)) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
+function mySome(callback, array) {
+  if (array.length === 0) { return false; }
+
+  for (let i = 0; i < array.length; i++) {
+    if (callback(thisArg[i], i, thisArg)) {
+      return true;
+    }
+  }
+
+  return false;
+}
