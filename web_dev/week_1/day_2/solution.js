@@ -102,3 +102,41 @@ function myEvery(callback, array) {
 
   return true;
 }
+
+Array.prototype.myReduce = function (callback, initalValue) {
+  if (this.length === 0) { throw TypeError; }
+  let acc;
+  let index = 0;
+
+  if (initalValue === undefined) {
+    acc = this[0];
+    index++;
+  } else {
+    acc = initalValue;
+  }
+
+  for (; index < this.length; index++) {
+    acc = callback(acc, this[index], index, this);
+  }
+
+  return acc;
+}
+
+function myReduce(array, callback, initalValue) {
+  if (array.length === 0) { throw TypeError; }
+  let acc;
+  let index = 0;
+
+  if (initalValue === undefined) {
+    acc = array[0];
+    index++;
+  } else {
+    acc = initalValue;
+  }
+
+  for (; index < array.length; index++) {
+    acc = callback(acc, array[index], index, array);
+  }
+
+  return acc;
+}
