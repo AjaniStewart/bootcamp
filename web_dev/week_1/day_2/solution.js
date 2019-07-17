@@ -29,13 +29,23 @@ function myMap(callback, array) {
   }
   return newArray;
 }
+
 Array.prototype.myFilter = function (callback, thisArg) {
   if (thisArg === undefined) { thisArg = this; }
-
   let newArray = [];
-  for (let i = 0; i < thisArg; i++) {
+  for (let i = 0; i < thisArg.length; i++) {
     if (callback(thisArg[i], i, thisArg)) {
       newArray.push(thisArg[i]);
+    }
+  }
+  return newArray;
+}
+
+function myFilter(callback, array) {
+  let newArray = [];
+  for (let i = 0; i < array.length; i++) {
+    if (callback(array[i], i)) {
+      newArray.push(array[i]);
     }
   }
   return newArray;
