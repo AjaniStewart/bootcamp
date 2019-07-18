@@ -200,3 +200,77 @@ function myPush(array, ...args) {
   }
   return array.length;
 }
+
+Array.prototype.myLastIndexOf = function (searchElement, fromIndex) {
+  if (fromIndex === undefined || fromIndex >= this.length) {
+    fromIndex = this.length - 1;
+  }
+
+  if (fromIndex < 0) {
+    fromIndex = this.length + fromIndex;
+    if (fromIndex < 0) { return -1; }
+  }
+
+  for (; fromIndex >= 0; fromIndex--) {
+    if (searchElement === this[fromIndex]) { return fromIndex; }
+  }
+
+  return -1;
+}
+
+function myLastIndexOf(searchElement, array, fromIndex) {
+  if (fromIndex === undefined || fromIndex >= array.length) {
+    fromIndex = array.length - 1;
+  }
+
+  if (fromIndex < 0) {
+    fromIndex = array.length + fromIndex;
+    if (fromIndex < 0) { return -1; }
+  }
+
+  for (; fromIndex >= 0; fromIndex--) {
+    if (searchElement === array[fromIndex]) { return fromIndex; }
+  }
+
+  return -1;
+}
+
+Object.myKeys = function (obj) {
+  let keys = [];
+  for (let key in obj) {
+    if (obj.hasOwnProperty(key)) {
+      keys.push(key);
+    }
+  }
+  return keys;
+}
+
+function myKeys(obj) {
+  let keys = [];
+  for (let key in obj) {
+    if (obj.hasOwnProperty(key)) {
+      keys.push(key);
+    }
+  }
+  return keys;
+}
+
+Object.myValues = function (obj) {
+  let values = [];
+  for (let key in obj) {
+    if (obj.hasOwnProperty(key)) {
+      values.push(obj[key]);
+    }
+  }
+  return values;
+}
+
+function myValues(obj) {
+  let values = [];
+  for (let key in obj) {
+    if (obj.hasOwnProperty(key)) {
+      values.push(obj[key]);
+    }
+  }
+  return values;
+}
