@@ -186,3 +186,17 @@ function myIndexOf(searchElement, array, fromIndex) {
 
   return -1;
 }
+
+Array.prototype.myPush = function (...args) {
+  for (let i = 0; i < args.length; i++) {
+    this[this.length] = args[i];
+  }
+  return this.length;
+}
+
+function myPush(array, ...args) {
+  for (let i = 0; i < args.length; i++) {
+    array[array.length] = args[i];
+  }
+  return array.length;
+}
