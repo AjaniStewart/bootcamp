@@ -145,5 +145,44 @@ Array.prototype.myIncludes = function (valueToFind, fromIndex) {
   if (fromIndex === undefined) {
     fromIndex = 0;
   }
+  if (fromIndex >= this.length) { return false; }
+
   return this.slice(fromIndex).mySome((x) => x === valueToFind);
+}
+
+function myIncludes(valueToFind, array, fromIndex) {
+  if (fromIndex === undefined) {
+    fromIndex = 0;
+  }
+  if (fromIndex >= array.length) { return false; }
+
+  return array.slice(fromIndex).mySome((x) => x === valueToFind);
+}
+
+Array.prototype.myIndexOf = function (searchElement, fromIndex) {
+  if (fromIndex === undefined) {
+    fromIndex = 0;
+  } else if (fromIndex >= this.length) {
+    return -1;
+  }
+
+  for (; fromIndex < this.length; fromIndex++) {
+    if (this[fromIndex] === searchElement) { return fromIndex; }
+  }
+
+  return -1;
+}
+
+function myIndexOf(searchElement, array, fromIndex) {
+  if (fromIndex === undefined) {
+    fromIndex = 0;
+  } else if (fromIndex >= array.length) {
+    return -1;
+  }
+
+  for (; fromIndex < array.length; fromIndex++) {
+    if (array[fromIndex] === searchElement) { return fromIndex; }
+  }
+
+  return -1;
 }
