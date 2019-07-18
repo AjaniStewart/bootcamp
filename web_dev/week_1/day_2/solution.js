@@ -140,3 +140,10 @@ function myReduce(array, callback, initalValue) {
 
   return acc;
 }
+
+Array.prototype.myIncludes = function (valueToFind, fromIndex) {
+  if (fromIndex === undefined) {
+    fromIndex = 0;
+  }
+  return this.slice(fromIndex).mySome((x) => x === valueToFind);
+}
