@@ -26,6 +26,10 @@ class Form extends React.Component {
     event.preventDefault();
   }
 
+  handleCancel() {
+    this.setState(this.baseState);
+  }
+
   handleEdit() {
     this.setState({ edit: true });
   }
@@ -38,14 +42,25 @@ class Form extends React.Component {
         <form onSubmit={this.handleSubmit}>
           <label>
             First name:
-          <input className="firstName" type="text" placeholder={this.state.firstName} onChange={this.handleChange}></input>
+          <input className="firstName"
+              type="text"
+              placeholder={this.state.firstName}
+              onChange={this.handleChange}>
+            </input>
           </label>
           <label>
             Last name:
-          <input className="lastName" type="text" placeholder={this.state.lastName} onChange={this.handleChange}></input>
+          <input className="lastName"
+              type="text"
+              placeholder={this.state.lastName}
+              onChange={this.handleChange}>
+            </input>
           </label>
           <input type="submit" value="Save" />
-          <button className="cancel" onClick={() => { this.setState(this.baseState) }}>Cancel</button>
+          <button className="cancel"
+            onClick={() => { this.handleCancel() }}>
+            Cancel
+          </button>
         </form>
       );
     } else {
@@ -67,10 +82,43 @@ class Form extends React.Component {
 
 }
 
+
+class Folder extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showContents: true,
+    }
+  }
+
+  toggleShow() {
+    this.setState({ showContents: !this.state.showContents })
+  }
+
+  render() {
+    return (
+      <div className="folder">
+        <h2>Home</h2>
+        {this.state.showContents &&
+          <ul>
+            <li>File1</li>
+            <li>File2</li>
+            <li>File3</li>
+          </ul>
+        }
+        <button onClick={() => this.toggleShow()}>
+          {this.state.showContents ? "Hide items" : "Show Items"}
+        </button>
+      </div>
+    );
+  }
+}
+
 function App() {
   return (
     <div className="App">
       <Form />
+      <Folder />
     </div>
   );
 }
